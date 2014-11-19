@@ -10,7 +10,7 @@
     /*
     	internal variables
     	*/
-    fileRegExp = /\.((jp(e)?g)|(png)|(gif))$/i;
+    fileRegExp = /((jp(e)?g)|(png)|(gif))/i;
     this.onLoad = __bind(function() {
       return true;
     }, this);
@@ -306,11 +306,12 @@
     this.context = this.canvas.getContext('2d');
     if (img.match(fileRegExp)) {
       this.image = new Image();
+      this.image.src = img;
       this.image.onload = __bind(function() {
         this.setUpImageData();
         return this.onLoad();
       }, this);
-      this.image.src = img;
+      
     } else {
       this.image = document.querySelector(img);
       this.setUpImageData();
